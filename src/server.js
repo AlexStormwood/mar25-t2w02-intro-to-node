@@ -14,6 +14,13 @@ app.use(express.json());
 // URL Encoded is typically from a form, like a <form></form>
 app.use(express.urlencoded({extended: true}));
 
+app.set("query parser", "extended");
+// // Connect to the DB before any routes are mounted
+// await dbConnect();
+
+
+
+
 
 
 // Configure the server to respond to GET "/" endpoint requests
@@ -38,6 +45,16 @@ app.post("/", (request, response) => {
 		message: repeatedWord + repeatedWord + repeatedWord
 	});
 });
+
+
+// Exports as a default export:
+const bookRouter = require("./controllers/booksController.js");
+const { dbConnect } = require('./utils/database.js');
+app.use("/books", bookRouter);
+
+// Exports as an object:
+// const {bookRouter} = require()
+
 
 module.exports = {
 	app
