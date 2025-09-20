@@ -5,6 +5,10 @@ const router = express.Router();
 // GET all books from the database
 router.get("/", async (request, response) => {
 	let results = await Book.find();
+
+	// Add author data for all authors referenced in each book document
+	await Book.populate(results, {path: "author"});
+
 	response.json({
 		data: results
 	});
