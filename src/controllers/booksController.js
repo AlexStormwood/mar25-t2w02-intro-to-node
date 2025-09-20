@@ -38,6 +38,49 @@ router.get("/search", async (request, response) => {
 	// });
 });
 
+// POST to make a new book
+router.post("/", async (request, response) => {
+
+	let readyToUseData = JSON.parse(JSON.stringify(request.body));
+
+	if (readyToUseData.title && typeof readyToUseData != "string"){
+		// delete readyToUseData.title;
+		readyToUseData.title = readyToUseData.title.toString();
+	}
+
+
+	let results = await new Book(readyToUseData).save();
+
+	response.json({
+		results: results
+	});
+
+});
+
+// PATCH to partially update an existing book
+router.patch("/", async (request, response) => {
+
+	let results = null;
+
+	response.json({
+		results: results
+	});
+
+});
+
+// DELETE to remove a book from the DB
+router.delete("/", async (request, response) => {
+
+	let results = null;
+
+	response.json({
+		results: results
+	});
+
+});
+
+
+
 // module.exports = {router};
 // module.exports = {
 // 	booksController: router

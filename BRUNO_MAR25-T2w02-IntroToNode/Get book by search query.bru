@@ -5,9 +5,14 @@ meta {
 }
 
 get {
-  url: http://localhost:5432/books/68cdfbebffe14cd190e4fddb
+  url: http://localhost:5432/books/search?title=Some Cool Book About Puns&author=Some Punny Guy
   body: none
   auth: inherit
+}
+
+params:query {
+  title: Some Cool Book About Puns
+  author: Some Punny Guy
 }
 
 settings {

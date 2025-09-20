@@ -1,0 +1,22 @@
+meta {
+  name: Create one new book
+  type: http
+  seq: 6
+}
+
+post {
+  url: http://localhost:5432/books/
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "title":"hello, world",
+    "author":["Alex"]
+  }
+}
+
+settings {
+  encodeUrl: true
+}

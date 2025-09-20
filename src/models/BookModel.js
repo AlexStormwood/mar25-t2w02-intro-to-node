@@ -16,7 +16,6 @@ const BookSchema = new mongoose.Schema({
 });
 
 
-
 const Book = mongoose.model(
 	// model name
 	"Book", 
